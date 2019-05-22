@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMART - Reference</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+	
+	<style>
+	
+		.doc-list {
+			list-style-type: none;
+			margin-left: -30px;
+		}
+		
+		.doc-list > li {
+		<!--	font-size: 1.3em; -->
+		}
+		
+		.doc-list > li:not(:first-child) {
+			padding-top: 15px;		
+		}
+		
+		.doc-list > li > a {
+			color: #CC6600;
+			font-weight: bold;		
+		}
+		
+		.doc-list ul {
+			list-style-type: none;
+			margin-left: -10px;
+		}
+		
+		.doc-list > li > ul > li {
+			font-size: 0.8em;
+		}
+		
+		.doc-list > li > ul > li > a {
+			color: #333;
+		}
+		
+		.doc-list > li > ul > li:hover {
+			list-style-type: circle;
+		}
+
+
+	figure {
+  display: table;
+}
+figcaption {
+  display: table-caption;
+  caption-side: top;
+}
+	</style>
+	
+  </head>
+  <body>
+
+	<nav class="navbar navbar-shinybs navbar-fixed-top bs-bg-color bs-bg-pattern" role="navigation">
+	  <div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#shinybs-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand" href="index.html">SMART</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="shinybs-collapse">
+		  <ul class="nav navbar-nav">
+				<li><a href = "install.html">Install</a></li>
+                <li><a href = "quickStart.html">Quick Start</a></li>
+				<li><a href = "reference.html">Reference</a></li>
+				<li><a href = "examples.html">Examples</a></li>
+				<li><a href = "changes.html">Changes</a></li>
+				<li><a href = "help.html">Help</a></li>
+		  </ul>
+		</div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+
+	<div class = "container">
+		<div class = "row">
+		
+			<!-- Sidebar navigation -->
+		
+			<nav class = "col-xs-2 sbs-sidebar">
+				<ul id = "sidebar" class = "nav nav-stacked fixed">
+					<li>
+						<a href = "#mapping_rules">Mapping Guidelines</a>
+						<ul class = "nav nav-stacked">
+						     <li> <a href = "#measure">Measures</a>
+							 <li> <a href = "#dimension">Dimensions</a>
+							 <li> <a href = "#attribute">Attributes</a>
+							 <li> <a href = "#others">Others</a>
+						</ul>
+					
+					<li><a href = "#reusable_mapping">Reusable Mapping</a></li>
+										
+					<li><a href = "#reporting_options">Generate</a></li>
+					
+					
+				    <li><a href = "#online_sdmx_registry">Online SDMX Registry</a></li>
+					 			<ul class = "nav nav-stacked">
+					 <li> <a href = "#online_query">Online Query Builder</a>
+							 <li> <a href = "#addRegistry">Add/Edit Registry</a>
+</ul>
+						
+<!-- 					<li> <a href = "#toolbox">Toolbar</a> -->
+
+				</ul>
+			</nav>
+			
+			<!-- Main Content -->
+			
+			<div class = "col-xs-10">
+				<h1 class = "page-header bs-color"><i class="fa fa-book fa-2x main-icon"></i> Reference</h1>
+	
+				<section id = "mapping_rules" class = "group">
+					 <h2 class = "bs-color"><i class = "fa fa-chevron-right "></i> Mapping Guidelines</h2>					 
+					    <ul class = "doc-list">
+						<section id = "measure" class = "group">
+						<li><h3>Measures</h3>
+						<hr style="margin-top:-10px;">
+						
+						<p>In the mapping module, the Tab <strong>"Measures"</strong> allows to define the observation value of interest or the primary measure. In SDMX terminology, this is typically denoted as "OBS_VALUE".
+						As shown in the diagram below, there are four parameters that can be specified and will determine the way the measure is computed:
+						</p>
+											<a href="#imagemodal" class="pop">
+												<img width="100%" src="pics/measure.png" alt="Mapping Guidelines/measure" >
+												</a>
+													
+						<ol>
+						<li> The operation type <strong>must</strong> be specified. In microdata processing, it is often to count cases, and the operation then will be set to "<code>COUNT</code>". To operate a summation or an average, it is possible to specify operation as "<code>SUM</code>" or "<code>MEAN</code>".   	
+						<p>
+						<br>
+						In the case of transcoding aggregate datasets (not microdata), the operation “<code>NONE</code>” <strong>must</strong> be selected. 
+						<br>
+						Notice that the <code>weights</code> variable can be assigned afterwards in Tab "<strong>Others</strong>", and this will automatically expand the results, so it is not necessary to specify here the expansion operation.</p>
+						
+						<li> <p>When the operation is performed over an input variable, such like "<code>SUM</code>", "<code>MEAN</code>" or "<code>NONE</code>", the corresponding variable <strong>must</strong> be assigned. When "COUNTing" the cases, the option to specify the input variable is disabled as no input variable is required (cases will be counted anyway). </p>	
+						<li> If needed, specify the condition to filter the records to be considered. Logical conditions using the R logical operators and only the <code>TRUE/FALSE</code> sentences are valid. <a href = "#Logical_Operators">"Logical Operators"</a> in <strong>Toolbar</strong> will help you to specify conditions with the most common R operators. For example, the following condition selects male individuals older than 15 years of age, when <code>gender</code> is a categorical variable with 2 values (1 = male, 2 = female) and <code>age</code> is an integer variable:  
+						<pre>
+						<code>gender == 1 & age > 15</code></pre>	
+						<li> If the measure is a rate, it can be computed "on-the-fly". Click the button <code>Specify Denominator (+/-)</code> to specify the quotients between variables. The same filtering rule applies for both the numerator and the denominator.       
+												
+						</ol>
+												
+						</section>
+						
+						<section id = "dimension" class = "group">
+						<li><h3>Dimensions</h3>	
+						<hr style="margin-top:-10px;">
+						<p>SMART parses the input SDMX DSD artifacts and decomposes the components of <code>Dimension</code> (including <code>TimeDimension</code>). These components will further be presented in the Tab <strong>"Dimensions"</strong> and all of them must be mapped. 
+						According to the SDMX concept definition, these <strong>"dimensions"</strong> determine the (output) data set's "physical" structure. There are usually <code>codelists</code> associated to the <strong>"dimensions"</strong> which list the possible values the <strong>"dimensions"</strong> can take.
+			</p>
+			
+<p>			
+To map a particular dimension, depending on whether it will take a single key value (constant) or multiple key values (variable), and whether it has codelist or not, there are four different treatments: 
+</p>						
+								                           										
+		     		<p style="text-align:center;"><img align="middle" width="71%" src="pics/dimensionCases.png" alt="Mapping Guidelines/dimensionCases" >
+						</p>
+						
+						<ul>
+<li> <strong>Case 1: Variable without Codelist.</strong> <p>The <code>TimeDimension</code> <code>TIME_PERIOD</code> does not have codelist, but the input dataset has a variable called <code>Time</code> which takes multiple values, i.e., 2001,2002,...,2015. In this case, just pick variable <code>Time</code>.  
+												</p>
+												
+												<a href="#imagemodal" class="pop">
+												<img width="100%" src="pics/DimensionCase1.png" alt="Mapping Guidelines/dimCase1" >
+												</a>
+
+<li> <strong>Case 2: Constant without Codelist.</strong> <p>A micro dataset doesn't contain any variable regarding <code>TimeDimension</code>, but the user knows this data corresponds to the Household Survey done in 2002. In this case, just enter <code>2002</code> in the Textbox to assign such value to the <code>TIME_PERIOD</code> dimension.
+ 												</p>
+												<a href="#imagemodal" class="pop">
+												<img width="100%" src="pics/DimensionCase2.png" alt="Mapping Guidelines/dimCase2" >
+												</a>
+
+<li> <strong>Case 3: Variable with Codelist.</strong> <p>This is a common scenario. For example, a dimension <code> CLASSIF_SEX</code> has codelist with possible values (<code>SEX_@NA@,SEX_T,SEX_M,SEX_F</code>) and input data contains a variable called <code>gender</code> which has two specifications (<code>1</code> is male, <code>2</code> is female). First pick the input variable <code>gender</code>, and then recode the items accordingly. 
+												</p>
+												<a href="#imagemodal" class="pop">
+												<img width="100%" src="pics/DimensionCase3_1.png" alt="Mapping Guidelines/dimCase3_1" >
+												</a>
+
+
+<p>
+Notice that, the mapping can be one-to-one or <strong>many-to-one</strong>. For the case of many-to-one, for example consider an input dataset which has an integer variable <code>age</code> and the output dimension <code>CLASSIF_AGE</code> with a codelist with aggregated age bands, i.e., the aggregate category 10-years age band "15-24" includes all the individuals in the age group from 15 years old to 24 years old. To facilitate the many-to-one mapping, SMART supports wildcard expressions and specific masking for continuous value operators. The rules are defined as follows:
+</p>
+<pre>
+
+<h4><strong>Masking Rules in Many-to-one Mapping</strong></h4>
+<strong> Categorical variable value set</strong> 
+<ul>
+<li> <code>%</code>   ----   the masking should start with <code>%</code>
+<li> <code>;</code>   ----   multiple codes are separated by <code>;</code>, e.g., <code>1;2;3</code>
+<li> <code>?</code>   ----   stands in for any single character, e.g., <code>%1?</code> => 10,11,12,...,19  
+<li> <code>*</code>   ----   stands in for any number of characters, e.g.,  <code>%*</code> => include all  
+<li> <code>!</code>   ----   allows to exclude input values one at a time, e.g., <code>%*!A!C</code> => include all except A and C
+</ul>
+
+<strong> Continuous variable values</strong> 
+<ul>
+<li> <code>-</code>   ----   only the range input is allowed by using '-' separator. An empty lower-bound value means
+            "from the beginning" (e.g., "<code>-15</code>" means "up to 15"); an empty upper-bound value means 
+	    "and beyond" (e.g., "<code>65-</code>" means "65 and more"). 
+            "<code>-&#8734-</code>" means "To the infinite and beyond" (Buzz Lightyear). 
+</ul>
+</pre>
+
+												<p style="text-align:center;"><a href="#imagemodal" class="pop">
+												<img width="80%" src="pics/dimCase3_2_1.png" alt="Mapping Guidelines/dimCase3_2_1" vspace="20" >
+												</a></p>
+
+    
+
+
+<li> <strong>Case 4: Constant with Codelist.</strong> For example, the input data is an annual survey and the SDMX dimension <code>FREQ</code> (frequencies) has a codelist with multiple values (<code>A</code> is Annual, <code>D</code> is Daily, ...). In this case, just select the value <code>A</code> from the Combobox.
+    
+											<a href="#imagemodal" class="pop">
+												<img width="100%" src="pics/DimensionCase4.png" alt="Mapping Guidelines/dimCase4" >
+												</a>
+</ul>		
+</section>
+						
+						<section id = "attribute" class = "group">
+						<li><h3>Attributes</h3>
+						<hr style="margin-top:-10px;">
+						<p>
+						Together with <code>Dimension</code>, SDMX <code>Attributes</code> are also presented in the Tab <strong>"Attributes"</strong> for mapping. <code>Attribute</code> holds descriptive metadata, which gives additional information about the concepts used but do not affect the dataset structure itself. Just like <code>Dimension</code>, <code>Attribute</code> can also be coded or not coded.	
+						</p>
+						
+						<p>
+						The mapping process for <code>Attribute</code> is basically the same as for <code>Dimension</code>. The only difference is that in this version, SMART does not allow <strong>many-to-one</strong> recoding for attributes. That is, in <strong>Case 3: Variable with Codelist</strong>, any masking for many-to-one mapping is not allowed. On the other hand, assigning an input variable as <code>Attribute</code> may only occur in the transcoding task.  						
+						</p>
+										
+						</section>
+										
+						<section id = "others" class = "group">
+						<li><h3>Others</h3>				
+						<hr style="margin-top:-10px;">	
+						
+						When performing the aggregation task over a micro dataset, most of the time there is a column in the dataset specifying the sample weights (the "expansion factor"). This can be addressed in the Tab <strong>"Others"</strong>. Furthermore, there are 2 parameters in the Tab <strong>"Others"</strong> which can be specified in order to indicate the error tolerance of the final analysis report. 
+
+<pre>
+
+Parameter 1   ----   The Excel report will mark any value as <strong>'Not available'</strong> 
+                     if the number of observations is less than this parameter, default is 5.
+ 
+Parameter 2   ----   The Excel report will mark any value as <strong>'Unreliable'</strong> 
+                     if the number of observations is less than this parameter, default is 15.
+ 
+</pre>						
+				<p>
+												<a href="#imagemodal" class="pop">
+												<img width="100%" src="pics/otherWeight.png" alt="Mapping Guidelines/otherWeight" >
+												</a>				
+					</p>	
+						
+						
+						</section>
+					</ul>
+				</section>
+						
+
+				</section>
+				
+								<section id = "reusable_mapping" class = "group">
+				 <h2 class = "bs-color"><i class = "fa fa-chevron-right "></i> Reusable Mapping</h2>
+				 
+				 <p>When the mapping is done, all the mapped items can be reviewed in a summarized mapping list, which can be displayed by clicking the button <strong>View Mapping</strong><img  src="pics/viewMapIcon.png">  in <strong>Toolbar</strong>.
+				 As the example shown below, the last column <strong>"DSD_Dim_Type"</strong> denotes the type of entity: <code>STUDYVAR</code> is <strong>Measure</strong>; <code>WEIGHT</code> is <strong>Sample Weights</strong>; <code>DIM</code> is <strong>Dimension</strong>; <code>ATTRI</code> is <strong>Attribute</strong>.  
+				 The first two columns <strong>"DSD_Dim"</strong> and <strong>"DSD_Dim_Code"</strong> specify the concept and code from DSD, and the third and fourth column <strong>"EXT_Dim"</strong> and  <strong>"EXT_Dim_Code"</strong> specify the variable and recode value from the external input dataset. The remaining two columns <strong>"DSD_Attri"</strong>
+				 and <strong>"DSD_Attri_Code"</strong> are only used when extra mapping items are needed to record. For example, in the first row <strong>Measure</strong> (<code>STUDYVAR</code>), the filter condition <code>job_holder == 1</code> was recorded in column <strong>DSD_Attri_Code</strong>. 
+				 </p>
+				 
+				 <p>
+				 For dimensions and attributes, the column <strong>"DSD_Attri_Code"</strong> also specifies the type of recoding: <code>1</code> - dimension/attribute can take multiple values and it doesn't have a codelist; <code>2</code> - dimension/attribute takes only a single value and it doesn't have a codelist; <code>3</code> - dimension/attribute can take multiple value and it has a codelist; <code>4</code> - dimension/attribute takes only a single value and it has a codelist.      
+				 </p>
+
+				 
+				 			<p style="text-align:center;">
+												<a href="#imagemodal" class="pop">
+												<img width="80%" src="pics/mappingForm.png" alt="Mapping Guidelines/mapForm" >
+												</a>				
+					</p>	
+				 
+				 
+				 <p><strong>The mapping list can be saved in the CSV format for further re-use.</strong>  Go to <strong>Toolbar</strong> and click the button <strong>Save Mapping</strong> <img  src="pics/saveMapIcon.png"> to save it. To re-use the mapping, use at anytime the button <strong>Upload Mapping</strong> <img  src="pics/uploadMapIcon.png">. This is a very useful feature as mappings can be partially uploaded from different saved ones. SMART looks at the names of concepts and variables and if they match the mappings are uploaded, being <u>added</u> to other concepts already mapped in memory. If a concept already mapped in memory is found in the mapping file being uploaded, the whole mapping for this concept is overwritten.   </P>
+				 
+				 		 
+				</section>
+						
+				 
+				<section id = "reporting_options" class = "group">
+				 <h2 class = "bs-color"><i class = "fa fa-chevron-right "></i> Generate</h2> 
+				 <p></p>
+				 
+				 <p>Once the mapping is done, you can navigate to the Module <strong>Generate</strong> by clicking the button <img  src="pics/next.png">. Following steps will guide you to generate different reports: </p>
+				<ol>
+				<li> <p>Click the button <strong> Process</strong> to run the calculation or click <strong> Reset</strong> if you want to clean the current runs.
+</p>
+				<li><p> Select any table in the <strong>Tables (Indicators) List</strong> to view the results in the right-hand side <strong>Table Viewer</strong>
+</p>
+<li><p> It is possible to make minor changes in the mapping list and re-run the process. Click the button <strong>View Mapping</strong> to modify, and then click button <strong> Process</strong> again. If there is a major change to be done in mapping, then you can go back to Module <strong>Mapping</strong> and modify in details. This process can be repeated many times and runs will be executed until it reaches the memory limit.
+</p>
+<li> <p>At last, choose the formats you wish to report with for the desired tables and click the button <strong>Export</strong>. The results are saved under the Export folder. Click <strong>Open Export Folder</strong> to review.
+</p>
+												<a href="#imagemodal" class="pop">
+												<img width="100%" src="pics/generateOverview.png" alt="Generate/Overview" >
+												</a>					
+				</ol>
+								 
+<!-- 				   <ul class = "doc-list">
+						
+						<section id = "process_panel" class = "group">
+						<li><h3>Process & Reset</h3>
+						<hr style="margin-top:-10px;">
+											
+						</section>
+						
+						
+						<section id = "table_viewer" class = "group">
+						<li><h3>Table Viewer</h3>
+						<hr style="margin-top:-10px;">
+						
+						</section>
+						
+						
+						<section id = "export" class = "group">
+						<li><h3>Export options</h3>
+						<hr style="margin-top:-10px;">
+											
+						</section>
+						
+						</ul> -->
+			 
+				 
+				</section>
+				
+								<section id = "online_sdmx_registry" class = "group">
+				 <h2 class = "bs-color"><i class = "fa fa-chevron-right "></i> Online SDMX Registry</h2>
+				 
+		 
+   <ul class = "doc-list">
+						
+						<section id = "online_query" class = "group">
+						<li><h3>Online Query Builder</h3>
+						<hr style="margin-top:-10px;">
+						<p>
+						Instead of downloading the DSDs and have them stored in files to be uploaded into SMART, the tool provides the facility to fetch the DSDs from an SDMX registry on-the-fly (provided internet access is available). In the first Module <strong>Datasets and table Structures</strong>, click the button <strong>Online Query</strong> to launch the DSD Online Query Builder.      
+						</p>
+										 			<p style="text-align:center;">
+												<a href="#imagemodal" class="pop">
+												<img width="80%" src="pics/dsdOnlineQueryBuilder.png" alt="OnlineQuery" >
+												</a>				
+					</p>	
+						
+						<p>SMART uses the <code>dataflow</code> resource to query a list of available dataflows on the selected Registry. Each of the listed dataflows points to a DSD. The users can select any of them and click <strong>Load</strong> to pull the DSDs directly into the SMART application. If the downloaded DSDs are intended for future off-line use, the users can click <strong> "Save..."</strong> button to generate an XML local copy of DSDs.   
+</p>
+																
+						</section>
+						
+						
+						<section id = "addRegistry" class = "group">
+						<li><h3>Add/Edit Registry</h3>	
+						<hr style="margin-top:-10px;">
+						
+												<p>Be default, there are several SDMX registries already configured in SMART DSD Query Builder. 						
+												In addition, users can add or edit any registry they want in the Query Builder. To do so, click <strong>Edit Registry</strong> or go to <strong>Tools </strong> and then  <strong>"Add/Edit SDMX Registry..."</strong> to launch the pop-up editor. </p>
+												<p>
+												The parameters "<code>Is this .Stat?</code>" refers to .Stat version 7 platforms (not SDMX v2.1 compatible). SMART is able to correct on-the-fly the non-standard format and consume the web service.
+												</p>
+																						 			<p style="text-align:center;">
+												<a href="#imagemodal" class="pop">
+												<img width="50%" src="pics/addRegistry.png" alt="addRegistry" >
+												</a>				
+					</p>
+						
+						
+						
+						
+						</section>
+										 
+				 
+				 
+			</ul> 	 
+
+				
+				
+<!-- 								<section id = "toolbox" class = "group">
+			     <h2 class = "bs-color"><i class = "fa fa-chevron-right "></i> Toolbar</h2>
+				 
+				 <ul class = "doc-list">
+				 <section id = "Logical_Operators" class = "group">
+						<li><h3>Logical Operators</h3>
+						<hr style="margin-top:-10px;">
+						
+						Coming soon...
+				  
+				 </section> -->
+				 
+				 
+				 	</ul>					
+				 </section>
+				
+			</div>
+			
+		</div>	
+		
+	</div>
+	
+	<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width:95%;height:95%">
+    <div class="modal-content" >              
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+	
+	</body>
+	<footer>
+		<p>
+			This project is developed and maintained by <a href="https://www.ilo.org/ilostat">ILOSTAT</a>
+		</p>
+		<p>
+				© 1996-2017 International Labour Organization (ILO) | <a href="http://www.ilo.org/global/copyright/lang--en/index.htm"> Copyright and permissions</a>
+		</p>
+	</footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	
+	<script>
+		$('body').scrollspy({
+			target: '.sbs-sidebar',
+			offset: 120
+		});
+		
+		$(function() {
+		$('.pop').on('click', function() {
+			$('.imagepreview').attr('src', $(this).find('img').attr('src'));
+			$('#imagemodal').modal('show');   
+		});		
+        });
+	</script>
+	
+  </body>
+</html>

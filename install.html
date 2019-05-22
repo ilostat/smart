@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMART - Installation</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	
+  </head>
+  <body>
+
+	<nav class="navbar navbar-shinybs navbar-fixed-top bs-bg-color bs-bg-pattern" role="navigation">
+	  <div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#shinybs-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand" href="index.html">SMART</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="shinybs-collapse">
+		  <ul class="nav navbar-nav">
+				<li><a href = "install.html">Install</a></li>
+                <li><a href = "quickStart.html">Quick Start</a></li>
+				<li><a href = "reference.html">Reference</a></li>
+				<li><a href = "examples.html">Examples</a></li>
+				<li><a href = "changes.html">Changes</a></li>
+				<li><a href = "help.html">Help</a></li>
+		  </ul>
+		</div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+
+	<div class = "container">
+		<div class = "row">
+		
+			<!-- Sidebar navigation -->
+		
+			<nav class = "col-xs-2 sbs-sidebar">
+				<ul id = "sidebar" class = "nav nav-stacked fixed">
+					<li>
+						<a href = "#getting_ready">Getting Ready</a>
+						<ul class = "nav nav-stacked">
+							<li><a href = "#sys_requirement">System requirements</a></li>
+						    <li><a href = "#install_dotnet">Installing .NET framework</a></li>
+							<!-- <li><a href = "#install_r">Installing R</a></li> -->
+						</ul>
+					<li>
+						<a href = "#install_smart">Installing SMART</a>
+<!-- 						<ul class = "nav nav-stacked">
+						    <li><a href = "#without_prerequisites">Install without prerequisites</a></li>
+							<li><a href = "#with_prerequisites">Install with prerequisites</a></li>
+						</ul> -->
+					<li><a href = "#using_smart">Updating SMART</a></li>
+					<!--<li><a href = "#help_us_improve">Help Us Improve</a></li>-->
+				</ul>
+			</nav>
+			
+			<!-- Main Content -->
+			
+			<div class = "col-xs-10">
+				<h1 class = "page-header bs-color"><i class="fa fa-download fa-2x main-icon"></i> Install SMART</h1>
+				<section id = "getting_ready" class = "group">
+					<h2 class = "bs-color"><i class = "fa fa-chevron-right "></i> Getting Ready</h2>
+					<p> SMART is developed in both C# and R. C#.NET Windows Form is used for building the UI and R serves as its computational and reporting engine. Before you can use it please check the following system requirements and make sure .NET framework is installed on your computer. </p>
+					<div class = "subgroup" id = "sys_requirement">
+						<h3>System requirements</h3>	
+						    <ul>
+							<li><p>PC running Microsoft Windows XP (SP1 or later), Windows Vista, Windows 7 or Later. SMART runs in 32- and 64-bit environments.</p>
+						    <li><p>.NET 4.5 or later (included with recent Windows installations), and all updates and patches.</p>
+							<li><p>120MB disk space to install, plus space for temporary dataset copies. </p>
+							<li><p>At least 1GB RAM. </p>
+							<li><p>Ideally at least 1024 x 768 screen resolution (Optional). </p>
+							<li><p>A Web browser and Internet access are needed to download. Internet access is needed to automatically update the software and online query the DSDs. </p>							
+						</ul>						
+					</div>
+										<div class = "subgroup" id = "install_dotNet">
+						<h3>Installing .NET framework</h3>
+						<p> You can install it together with SMART by clicking <a href = "http://www.ilo.org/ilostat/tools/registerForm/Default.aspx?appId=smart">here</a>
+						<!-- <a href = "#without_prerequisites">Installing without prerequisites</a> -->, </p>
+						<p>or you can get it from <a href = "https://www.microsoft.com/net/download/windows">.NET website</a>, choose a version higher than 4.5 and install the required Runtime.</p>
+						</div>
+				<!-- 	<div class = "subgroup" id = "install_r">
+						<h3>Installing R</h3>
+						<p>Same as installing .NET framework, you can install it together with SMART by clicking <a href = "http://www.ilo.org/ilostat/tools/registerForm/Default.aspx?appId=smart">here</a>; </p>
+						<p>or you get it from <a href = "https://www.r-project.org/">R website</a> and install it yourself.</p>
+					</div> -->
+		
+					
+				</section>
+				<section id = "install_smart" class = "group">
+					<h2 class = "bs-color"><i class = "fa fa-chevron-right "></i> Installing SMART</h2>
+					<pre style="text-align: center;">
+					<h3>Click <a href = "http://www.ilo.org/ilostat/tools/registerForm/Default.aspx?appId=smart">here</a> to download and install SMART. </h3>
+					</pre>
+<!-- 					<p> You have two options to install SMART. If you have completed the prerequisites, go to option "1. Installing without prerequisites". Otherwise, go to option "2. Installing with prerequisites".          </p>
+					<div class = "subgroup" id = "without_prerequisites">
+						<h3>1. Installing without prerequisites</h3>
+						<p>If you are the first time user and never install R in your computer, this is the fastest option. Click here to install the prerequisites first and then launch the SMART installer.</p>				
+					</div>
+					<div class = "subgroup" id = "with_prerequisites">
+						<h3>2. Installing with prerequisites</h3>
+						<p>If you have all the prerequisites installed, just click here to launch the installer.</p>
+					</div> -->
+					
+					
+					
+				</section>
+				<section id = "using_smart" class = "group">
+					<h2 class = "bs-color"><i class = "fa fa-chevron-right "></i> Updating SMART</h2>
+					<p> After proceeding, please notice that SMART will launch the R package installation for the necessary libraries. This only performs once and will not run for the future executions. </p>
+					<p> SMART makes use of the ClickOnce Deployment method which enables it to self-update to the newest version. With this strategy, SMART can be installed and run with minimal user interaction. The only requirement to trigger the update is to have internet access at the moment you launch the application.</p>
+				</section>
+			</div>
+			
+		</div>	
+		
+	</div>
+	<footer>
+		<p>
+			This project is developed and maintained by <a href="https://www.ilo.org/ilostat">ILOSTAT</a>
+		</p>
+		<p>
+				© 1996-2017 International Labour Organization (ILO) | <a href="http://www.ilo.org/global/copyright/lang--en/index.htm"> Copyright and permissions</a>
+		</p>
+	</footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	
+	<script>
+		$('body').scrollspy({
+			target: '.sbs-sidebar',
+			offset: 120
+		});
+	</script>
+	
+  </body>
+</html>

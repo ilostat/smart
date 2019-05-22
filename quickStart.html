@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMART - Examples</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	
+  </head>
+  <body>
+
+	<nav class="navbar navbar-shinybs navbar-fixed-top bs-bg-color bs-bg-pattern" role="navigation">
+	  <div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#shinybs-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand" href="index.html">SMART</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="shinybs-collapse">
+		  <ul class="nav navbar-nav">
+				<li><a href = "install.html">Install</a></li>
+                <li class = "active"><a href = "quickStart.html">Quick Start</a></li>
+				<li><a href = "reference.html">Reference</a></li>
+				<li><a href = "examples.html">Examples</a></li>
+				<li><a href = "changes.html">Changes</a></li>
+				<li><a href = "help.html">Help</a></li>
+		  </ul>
+		</div><!-- /.navbar-collapse -->
+
+			
+	  </div><!-- /.container-fluid -->
+	</nav>
+
+	<div class = "container">
+		<div class = "row">
+		
+			<!-- Sidebar navigation -->
+		
+				<nav class = "col-xs-2 sbs-sidebar">
+			</nav> 
+			
+			<!-- Main Content -->
+			
+			<div class = "col-xs-10">
+				<h1 class = "page-header bs-color"><i class="fa fa-bolt fa-2x"></i> Quick Start </h1>
+				<section id = "components" class = "group">
+					
+					<p>Once SMART is successfully installed, you are all set and ready to work. The following brief instructions should provide you a quick start. </p>
+					<p>Initially, the objective of this tool is to allow a user to generate the tables that are requested by the ILO in the Yearly data reporting as well as to produce all the csv files ready to be uploaded in ILOSTAT or in LMIS.Stat. It is a standalone product built using a GUI in .NET on top of R statistical processor.
+					There are 3 steps in order to perform an analysis, as shown in the concept map below: </p>	
+					
+					<a href="#" class="pop">
+											<img width="100%" src="pics/SMART_concept_map.png" alt="Concept Map" >
+											</a>
+											
+						<ul>
+							<li><strong>Data and DSD inputs</strong>
+							<ul>SMART has two main inputs: a dataset with the source information and an XML file/message containing SDMX-ML DSD with one or multiple data structures to define the cross tables to be generated. This DSD can be a file or a message got from an SDMX RESTful query on an SDMX registry.</ul> </li>
+					<br>
+							<ul>In processing the input data, SMART can count cases, summarize, compute means and filter records based on complex conditions. However, it is not advisable to attempt to follow complex questionnaire sequences in the calculation of the indicators, but rather pre-process the micro data to compute and add derived variables using more powerful statistical packages like Stata, SPSS, SAS or R. These variables can then be used in the production of the output cross tabulations. 
+</ul>
+<br>
+<ul> The XML containing the DSD defines the structure of the table(s) and should include all the code lists necessary for dimensions and attributes (metadata).
+</ul>
+							
+							<a href="#" class="pop">
+							<img width="100%" src="pics/inputView.png" alt="Input Module Overview" >
+											</a>
+							<li><strong>Mapping</strong><ul>The "mapping" process links the concepts in the DSD with the variable in the input data file.  "Primary Measure" and "Dimensions" must be linked to the corresponding variables in the input dataset. 
+							</ul>
+							<br>
+							<ul>
+							For the categorical variables in the dataset which have different codes as the classification items in the DSDs, a mapping for each category must be done. This will allow, for example, to process a dataset which codes sex as Male=1 and Women=2, while the DSD uses "M" and "F". The "mapping" consists in assigning 1 and 2 to M and F, respectively. Some classification items from the DSD can be left unmapped meaning that they will not be included in the tabulation. In the same way, some categories in the dataset could be not mapped and this records won’t be counted in the tables that include such classification.
+							</ul>
+							<br>
+							<ul>
+							The final step before producing the reporting files is the assignment of the descriptive metadata (Notes). The attributes in the DSD will be presented to the user with a list of valid options to select. If the DSD includes one or more free text attributes for open text notes, they can be added at this point.  
+							</ul>
+							<br>
+							<ul>
+							All the <strong>mappings</strong> (variable definitions, transcoding information and notes’ values) can and should be saved for further re-use.
+							</ul>
+							</li>
+														<a href="#" class="pop">
+							<img width="100%" src="pics/mapView.png" alt="Mapping Module Overview" >
+											</a>
+							
+							<li><strong>Generate</strong><ul> When all the data has been entered and the variables in the dataset are properly mapped to the concepts in the DSD (<code>Measures</code>, <code>Dimensions</code> and <code>Attributes</code>), the user is requested to select the format for the output report. The available options are:
+							
+							<ul> <li>.csv for ILOSTAT </li>
+							<li>.csv for .Stat</li>
+							<li>SDMX</li>
+							<li>Excel</li>
+							</ul>
+							<br>
+							The cross tables defined by the DSD will be produced by clicking in the “PROCESS” button.
+							The completion status and results for each table will be showed in a report for visual verification. 
+							</li>
+                                <a href="#" class="pop">
+
+						</ul>
+							<img width="100%" src="pics/generateView.png" alt="Generate Module Overview" >
+											</a>
+						
+				</section>
+				
+									<p>Click <a href="reference.html"> <strong>REFERENCE</strong></a> to learn more about the mapping rules and the functionality of buttons.</p>	
+									<p>Click <a href="examples.html"> <strong>EXAMPLES</strong></a> to run with some concrete examples.</p>	
+
+									
+				
+			</div>
+			
+		</div>	
+		
+	</div>
+	
+			<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width:95%;height:95%">
+    <div class="modal-content" >              
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+	<footer>
+		<p>
+			This project is developed and maintained by <a href="https://www.ilo.org/ilostat">ILOSTAT</a>
+		</p>
+		<p>
+				© 1996-2017 International Labour Organization (ILO) | <a href="http://www.ilo.org/global/copyright/lang--en/index.htm"> Copyright and permissions</a>
+		</p>
+	</footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	
+	<script>
+		$('body').scrollspy({
+			target: '.sbs-sidebar',
+			offset: 120
+		});
+				$(function() {
+		$('.pop').on('click', function() {
+			$('.imagepreview').attr('src', $(this).find('img').attr('src'));
+			$('#imagemodal').modal('show');   
+		});		
+        });
+	</script>
+	
+  </body>
+</html>

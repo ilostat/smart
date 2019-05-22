@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>shinyBS: Collapses</title>
+  <script>
+	
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-60447924-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/shinyBS.css" rel="stylesheet">
+		<link href = "../css/styles/tomorrow.css" rel = "stylesheet" />
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href = "css/docs.css" rel = "stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<script src = "../js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	
+
+	
+  </head>
+  <body>
+
+	<nav class="navbar navbar-shinybs navbar-fixed-top bs-bg-color bs-bg-pattern" role="navigation">
+	  <div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#shinybs-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand" href="../index.html">shinyBS</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="shinybs-collapse">
+		  <ul class="nav navbar-nav">
+			<li><a href="../install.html">Install</a></li>
+			<li><a href="../changes.html">Changes</a></li>
+			<li class="active"><a href="../reference.html">Reference</a></li>
+			<li><a href="../examples.html">Examples</a><li>
+			<li><a href="../help.html">Help</a></li>
+		  </ul>
+		</div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+
+	<div class = "container">
+		<div class = "row">
+		
+			<!-- Sidebar navigation -->
+		
+			<nav class = "col-xs-3 sbs-sidebar">
+				<ul id = "sidebar" class = "nav nav-stacked fixed">
+					<li><a href = "#description">Description</a></li>
+					<li><a href = "#details">Details</a></li>
+					<li><a href = "#components">Components</a>
+						<ul class = "nav">
+              <li><a href = '#bsCollapse'>bsCollapse</a></li>
+<li><a href = '#bsCollapsePanel'>bsCollapsePanel</a></li>
+<li><a href = '#updateCollapse'>updateCollapse</a></li>
+						</ul>
+					</li>
+					<li><a href = "#changes">Changes</a></li>
+					<li><a href = "#examples">Example</a></li>
+				</ul>
+			</nav>
+			
+			<!-- Main Content -->
+			
+			<div class = "col-xs-9">
+				<h1 class = "page-header bs-color"><i class="fa fa-book fa-2x main-icon"></i> Collapses</h1>
+				<section id = "description" class = "group">
+					<h2>Description</h2>
+					<p>
+Collapse panels allow you to reduce clutter in your Shiny app by making
+panels of information that open and close with a user's click. Any type of
+content can go in a collapse panel. Standard Bootstrap styling options are
+available.
+</p>
+				</section>
+				<section id = "details" class = "group">
+					<h2>Details</h2>
+          
+Collapses are designed to mimic <code>list("tabsetPanel")</code> in their implementation.
+Start with <code>bsCollapse</code> to create a panel group, then fill it with panels
+using <code>bsCollapsePanel</code>.
+<p>
+<code>bsCollapse</code> acts as an input, so you can retrieve which panels are open
+from the input object passed to the function in <code>list("shinyServer")</code>.
+</p>
+<p>
+<code>updateCollapse</code> can be used within your server logic to open/close
+collapse panels or to change their style.
+
+				</section>
+				<section id = "components" class = "group">
+					<h2>Components</h2>
+					<section id = "bsCollapse" class = "subgroup">
+  <h3>bsCollapse</h3>
+  <p>
+<code>bsCollapse</code> is used in your UI to create a collapse panel group. Use
+<code>list("bsCollapsePanel")</code> to populate this object with panels.
+</p>
+  <h4>Usage</h4>
+  <pre><code>bsCollapse(..., id = NULL, multiple = FALSE, open = NULL)
+</code></pre>
+  <h4>Parameters</h4>
+  <dl>
+    <dt><code>id</code></dt>
+<dd><strong>Optional</strong> You can use <code>input$id</code> in your Server logic to
+determine which panels are open, and <code>list("updateCollapse")</code> to open/close
+panels.</dd>
+<dt><code>multiple</code></dt>
+<dd>Can more than one panel be open at a time? Defaults to <code>FALSE</code>.</dd>
+<dt><code>open</code></dt>
+<dd>The <code>value</code>, (or if none was supplied, the <code>title</code>) of
+the panel(s) you want open on load.</dd>
+<dt><code>...</code></dt>
+<dd><code>list("bsCollapsePanel")</code> elements to include in the Collapse.</dd>
+  </dl>					
+</section>
+<section id = "bsCollapsePanel" class = "subgroup">
+  <h3>bsCollapsePanel</h3>
+  <p>
+<code>bsCollapsePanel</code> creates individual panels within a <code>list("bsCollapse")</code> object.
+</p>
+  <h4>Usage</h4>
+  <pre><code>bsCollapsePanel(title, ..., value = title, style = NULL)
+</code></pre>
+  <h4>Parameters</h4>
+  <dl>
+    <dt><code>title</code></dt>
+<dd>The title to display at the top of the panel.</dd>
+<dt><code>value</code></dt>
+<dd><strong>Optional</strong> The value to return when this panel is open. Defaults to <code>title</code>.</dd>
+<dt><code>style</code></dt>
+<dd><strong>Optional</strong> A Bootstrap style to apply to the panel. (<code>primary</code>, <code>danger</code>, <code>warning</code>, <code>info</code>, or <code>success</code>)</dd>
+<dt><code>...</code></dt>
+<dd>UI elements to include within the panel.</dd>
+  </dl>					
+</section>
+<section id = "updateCollapse" class = "subgroup">
+  <h3>updateCollapse</h3>
+  <p>
+<code>updateCollapse</code> is used within the Server logic of your Shiny app to
+modify a Collapse after load.
+</p>
+  <h4>Usage</h4>
+  <pre><code>updateCollapse(session, id, open = NULL, close = NULL, style = NULL)
+</code></pre>
+  <h4>Parameters</h4>
+  <dl>
+    <dt><code>session</code></dt>
+<dd>The session object passed to function given to shinyServer.</dd>
+<dt><code>id</code></dt>
+<dd>The id of the Collapse object you want to change.</dd>
+<dt><code>open</code></dt>
+<dd>A vector of <code>value</code> (or <code>title</code> if no <code>value</code> was
+provided) values identifying the panels you want to open.</dd>
+<dt><code>close</code></dt>
+<dd>A vector of <code>value</code> (or <code>title</code> if no <code>value</code> was
+provided) values identifying the panels you want to close.</dd>
+<dt><code>style</code></dt>
+<dd>A named list of Bootstrap styles (<code>primary</code>, <code>danger</code>, <code>info</code>,
+<code>warning</code>, <code>success</code>, or <code>default</code>). The names should correspond
+to the <code>value</code> (or <code>title</code> if no <code>value</code> was provided) of the
+<code>list("bsCollapsePanel")</code> you want to change.</dd>
+  </dl>					
+</section>
+				</section>
+				<section id = "changes" class = "group">
+					<h2>Changes</h2>
+          
+<p>
+<code>style</code> is a new option that wasn't available in previous versions of
+shinyBS.
+
+				</section>
+
+				<section id = 'examples' class = "group">
+
+					<h2>Example</h2>
+					
+					<div role="tabpanel">
+						<ul class = "nav nav-tabs nav-justified" role = "tablist">
+							<li class = "active"><a href = "#code" role = "tab" data-toggle = "tab">Code</a></li>
+							<li><a href = "#app" role = "tab" data-toggle = "tab">App</a></li>
+						</ul>
+						<div class = "tab-content">
+							<div class = "tab-pane active" id = "code" role = "tabpanel">
+
+								<pre><code class = "R">
+
+library(shiny)
+library(shinyBS)
+
+shinyApp(
+ ui =
+ fluidPage(
+   sidebarLayout(
+     sidebarPanel(HTML("This button will open Panel 1 using <code>updateCollapse</code>."),
+                  actionButton("p1Button", "Push Me!"),
+                  selectInput("styleSelect", "Select style for Panel 1",
+                   c("default", "primary", "danger", "warning", "info", "success"))
+     ),
+     mainPanel(
+       bsCollapse(id = "collapseExample", open = "Panel 2",
+                  bsCollapsePanel("Panel 1", "This is a panel with just text ",
+                   "and has the default style. You can change the style in ",
+                   "the sidebar.", style = "info"),
+                  bsCollapsePanel("Panel 2", "This panel has a generic plot. ",
+                   "and a 'success' style.", plotOutput("genericPlot"), style = "success")
+       )
+     )
+   )
+ ),
+ server =
+ function(input, output, session) {
+   output$genericPlot <- renderPlot(plot(rnorm(100)))
+   observeEvent(input$p1Button, ({
+     updateCollapse(session, "collapseExample", open = "Panel 1")
+   }))
+   observeEvent(input$styleSelect, ({
+     updateCollapse(session, "collapseExample", style = list("Panel 1" = input$styleSelect))
+   }))
+ }
+)
+
+                </code></pre>	
+
+						</div>
+						
+						<div class = "tab-pane" id = "app" role = "tabpanel">
+							 <iframe src="https://ebailey78.shinyapps.io/Collapses/" frameborder = 0></iframe> 
+						</div>
+					</div>
+		
+				</section>
+				
+			</div>
+				
+			</div>	
+			
+		</div>
+	<footer class = "container" >
+		<p>
+			This project is maintained by <a href="https://github.com/ebailey78">ebailey78</a>
+			and is in no way affiliated with <a href = "http://shiny.rstudio.com">Shiny</a> or <a href = "http://www.rstudio.com">RStudio</a>.
+		</p>
+		<p>
+			<small>
+				Hosted on GitHub Pages
+			</small>
+		</p>
+	</footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+	
+	<script>
+		$('body').scrollspy({
+			target: '.sbs-sidebar',
+			offset: 120
+		});
+	</script>
+	
+  </body>
+</html>
