@@ -14,7 +14,7 @@
     <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Application Files\ILOSTAT_SMART_1_3_0_13\ILOSTAT_SMART.exe.manifest" size="88919">
+    <dependentAssembly dependencyType="install" codebase="http://ilo.org/ilostat/tools/smart/app/Application%20Files/ILOSTAT_SMART_1_3_0_13/ILOSTAT_SMART.exe.manifest" size="88919">
       <assemblyIdentity name="ILOSTAT_SMART.exe" version="1.3.0.13" publicKeyToken="164b844cd26e1430" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
