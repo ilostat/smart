@@ -1,13 +1,44 @@
-body { padding-top: 50px; }
+body { padding-top: 50px; 	
+	color: #230050;
+	font-family: "Noto Sans", sans-serif;
+	font-size : 16px;
+	line-height : 1.5;
+	font-weight: 400;
+	}
 
-.bs-bg-color {
-	background-color: #37468E;
+a {
+	color: #1E2DBE; 
 }
 
+h1 {
+	font-family: "Overpass", sans-serif;
+	font-size: 38px;
+	Color: #230050;
+	Line-Height : 1.2;
+	font-weight : bold;
+}
 
+h2 {
+	font-family: "Overpass", sans-serif;
+	font-size: 28px;
+	Color: #FA3C4B;
+	Line-Height : 1.3;
+	font-weight : bold;
+}
+
+h3 {
+	font-family: "Overpass", sans-serif;
+	font-size: 22px;
+	Color: #FA3C4B;
+	Line-Height : 1.3;
+	font-weight : bold;
+}
+.bs-bg-color {
+	background-color: #1E2DBE;
+}
 
 .bs-color {
-	color: #37468E;
+	color: #230050;
 }
 
 .cl-color{
